@@ -91,6 +91,8 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */var _js_test_imports__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/test_imports */ "./app/src/js/test_imports.js");
 /* harmony import */var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./app/src/index.scss?95eb");
+// run: npm run watch
+// save this file > check console
 // open index.scss
 
 

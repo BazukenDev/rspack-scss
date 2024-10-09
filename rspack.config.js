@@ -4,6 +4,7 @@ const path = require('path');
 const rspack = require('@rspack/core');
 const sass = require('sass-embedded');
 
+
 /** @type {import('@rspack/cli').Configuration} */
 let config = {
   name: 'sass-watch-test',
@@ -85,7 +86,7 @@ let config = {
               implementation: sass,
               // sourceMap: true,
               sassOptions: {
-                // cache: false
+                cache: false
               },
             },
           },
@@ -101,16 +102,16 @@ let config = {
     css: true,
   },
   optimization: {
-    // emitOnErrors: true,
+    emitOnErrors: true,
   },
-  // externalsType: 'window',
-  // externals: {
-  //   jquery: '$',
-  // },
+  externalsType: 'window',
+  externals: {
+    jquery: '$',
+  },
   stats: {
     // preset: 'detailed',
     // errorDetails: true,
-    // warnings: false
+    warnings: false
   }
 }
 
