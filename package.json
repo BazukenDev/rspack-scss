@@ -8,14 +8,23 @@
 	"scripts": {
 		"dev": "rspack serve --c rspack.config.js",
 		"build": "rspack build --c rspack.config.js",
-		"watch": "rspack build -w -c rspack.config.js"
+		"watch": "rspack build -w -c rspack.config.js",
+
+		"wpb": "webpack build -c webpack.config.js",
+		"wpw": "webpack build -w -c webpack.config.js"
+
 	},
 	"author": "",
 	"devDependencies": {
-		"@rspack/cli": "^1.0.8",
-		"@rspack/core": "^1.0.8",
+		"@rspack/cli": "^1.0.10",
+		"@rspack/core": "^1.0.10",
 		"css-loader": "^7.1.2",
+		"mini-css-extract-plugin": "^2.9.1",
+		"sass": "^1.79.5",
 		"sass-embedded": "^1.79.4",
-		"sass-loader": "^16.0.2"
+		"sass-loader": "^16.0.2",
+		"swc-loader": "^0.2.6",
+		"webpack": "^5.95.0",
+		"webpack-cli": "^5.1.4"
 	}
 }
