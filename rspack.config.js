@@ -70,7 +70,7 @@ let config = {
   },
   plugins: [
     new rspack.CssExtractRspackPlugin({
-      filename: 'app-[name].css',
+      filename: 'app-[name].css', // if this name = output.filename you will see an error. Without this name you get 2 css bundles.
     }),
   ],
   resolve: {

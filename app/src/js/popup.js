@@ -1,5 +1,6 @@
 import tippy from 'tippy.js';
 import { hideAll } from 'tippy.js';
+// this css files always create a second bundle.
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 import 'tippy.js/animations/perspective.css';
