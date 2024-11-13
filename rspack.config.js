@@ -9,16 +9,6 @@ const sass = require('sass-embedded');
 let config = {
   name: 'sass-watch-test',
   mode: "development",
-  watchOptions: {
-    // ignored: /node_modules/,
-    // followSymlinks: true,
-    // aggregateTimeout: 200,
-    // poll: true,
-    // stdin: false,
-  },
-  // devtool: 'source-map',
-  cache: false,
-  // target: ['web', 'es5'],
   entry: {
     main: path.resolve('./app/src/index.js')
   },
@@ -26,44 +16,22 @@ let config = {
     filename: 'app-[name].js',
     path: path.resolve('./app/public'),
   },
-  plugins: [
-    new rspack.CssExtractRspackPlugin({
-      filename: 'app-[name]-styles.css',
-    }),
-  ],
   module: {
     rules: [
       {
         test: /\.js$/,
         type: 'javascript/auto',
         loader: 'builtin:swc-loader',
-        /** @type {import('@rspack/core').SwcLoaderOptions} */
-        options: {
-          // sourceMaps: true,
-          // jsc: {
-          //   parser: {
-          //     syntax: "ecmascript",
-          //   },
-          //   target: "es5",
-          // },
-        },
         exclude: [/node_modules/],
       },
       {
         test: /\.s[ac]ss$/i,
         parser: {
           'css/auto': {
-            // namedExports: false,
+            namedExports: false,
           },
         },
         use: [
-          // {
-          //   loader: 'builtin:lightningcss-loader',
-          //   options: {
-          //     browsers: "last 4 years",
-          //     sourceMap: true,
-          //   },
-          // },
           {
             loader: rspack.CssExtractRspackPlugin.loader,
             options: {
@@ -73,9 +41,16 @@ let config = {
           {
             loader: 'css-loader',
             options: {
-              // url: false,
+              url: false,
               // import: false,
               // modules: false,
+              // sourceMap: true,
+            },
+          },
+          {
+            loader: 'builtin:lightningcss-loader',
+            options: {
+              browsers: "last 4 years",
               // sourceMap: true,
             },
           },
@@ -86,7 +61,6 @@ let config = {
               implementation: sass,
               // sourceMap: true,
               sassOptions: {
-                cache: false
               },
             },
           },
@@ -94,9 +68,14 @@ let config = {
       },
     ],
   },
+  plugins: [
+    new rspack.CssExtractRspackPlugin({
+      filename: 'app-[name].css',
+    }),
+  ],
   resolve: {
-    // modules: ['node_modules', 'js_modules'],
-    // extensions: ['.js', '.css', '.scss']
+    modules: ['node_modules', 'js_modules'],
+    extensions: ['.js', '.css', '.scss']
   },
   experiments: {
     css: true,
@@ -111,7 +90,7 @@ let config = {
   stats: {
     // preset: 'detailed',
     // errorDetails: true,
-    warnings: false
+    // warnings: false
   }
 }
 

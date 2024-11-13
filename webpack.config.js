@@ -3,6 +3,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const sass = require('sass');
+const globSASS = require('./globSass').default;
+// import { globSASS } from './globSass';
 
 /** @type {import('webpack').Configuration} */
 let config = {
@@ -62,9 +64,24 @@ let config = {
           {
             loader: 'sass-loader',
             options: {
-              implementation: sass,
+              // implementation: sass,
               // sourceMap: true,
               sassOptions: {
+                // importer: globSASS(),
+                importers: [{
+                  canonicalize(url) {
+                    console.log(`Url`, url);
+                    console.log(`Canonicalize url`, new URL(url));
+                    // if (!url.startsWith('@use')) return null;
+                    return new URL(url);
+                  },
+                  load(canonicalUrl) {
+                    return {
+                      contents: `body {background-color: ${canonicalUrl.pathname}}`,
+                      syntax: 'scss'
+                    };
+                  }
+                }],
                 cache: false
               },
             },

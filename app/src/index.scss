@@ -2,9 +2,5 @@
 // open './test-0.scss'
 
 
-@use './scss/test-1.scss';
-@use './test-0.scss';
-
-body {
-  background: red;
-}
+@use './test-0';
+@use 'scss';
